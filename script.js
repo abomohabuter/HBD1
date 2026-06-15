@@ -5,36 +5,36 @@ const backBtn = document.getElementById('back-btn');
 
 // عند الضغط على فتح الهدية
 openBtn.addEventListener('click', () => {
-    // 1. التبديل بين الشاشات
     welcomeScreen.classList.add('hidden');
     surpriseScreen.classList.remove('hidden');
     
-    // 2. إطلاق تأثير القصاصات الملونة الاحترافي (Confetti)
-    // الإطلاق الأول
+    // إفكتات قوية ومكثفة جداً (3 انفجارات متتالية وبأماكن مختلفة)
+    
+    // 1. انفجار رئيسي من المنتصف
     confetti({
-        particleCount: 150,
-        spread: 80,
+        particleCount: 200,
+        spread: 100,
         origin: { y: 0.6 }
     });
 
-    // إطلاق جانبي إضافي بعد ثانية لحركة أحلى
-    setTimeout(() => {
-        confetti({
-            particleCount: 50,
-            angle: 60,
-            spread: 55,
-            origin: { x: 0 }
-        });
-        confetti({
-            particleCount: 50,
-            angle: 120,
-            spread: 55,
-            origin: { x: 1 }
-        });
-    }, 400);
+    // 2. انفجار من الجانب الأيسر يندفع للأعلى
+    confetti({
+        particleCount: 80,
+        angle: 60,
+        spread: 60,
+        origin: { x: 0, y: 0.8 }
+    });
+
+    // 3. انفجار من الجانب الأيمن يندفع للأعلى
+    confetti({
+        particleCount: 80,
+        angle: 120,
+        spread: 60,
+        origin: { x: 1, y: 0.8 }
+    });
 });
 
-// زر العودة لإغلاق الرسالة
+// زر العودة
 backBtn.addEventListener('click', () => {
     surpriseScreen.classList.add('hidden');
     welcomeScreen.classList.remove('hidden');
