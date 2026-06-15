@@ -1,40 +1,42 @@
+// جلب عناصر واجهة المستخدم من صفحة الـ HTML
 const welcomeScreen = document.getElementById('welcome-screen');
 const surpriseScreen = document.getElementById('surprise-screen');
 const openBtn = document.getElementById('open-btn');
 const backBtn = document.getElementById('back-btn');
 
-// عند الضغط على فتح الهدية
+// الحدث الذي يشتغل فور الضغط على زر "افتحي الهدية"
 openBtn.addEventListener('click', () => {
+    // 1. إخفاء شاشة الترحيب وإظهار شاشة التهنئة لـ جنى
     welcomeScreen.classList.add('hidden');
     surpriseScreen.classList.remove('hidden');
     
-    // إفكتات قوية ومكثفة جداً (3 انفجارات متتالية وبأماكن مختلفة)
+    // 2. إطلاق تأثير الـ Confetti (القصاصات الملونة) بشكل مكثف جداً من 3 زوايا بنفس اللحظة
     
-    // 1. انفجار رئيسي من المنتصف
+    // الانفجار الأول: من منتصف الشاشة ويندفع للأعلى وللأطراف
     confetti({
         particleCount: 200,
         spread: 100,
         origin: { y: 0.6 }
     });
 
-    // 2. انفجار من الجانب الأيسر يندفع للأعلى
+    // الانفجار الثاني: من الزاوية اليمنى السفلية ويندفع باتجاه اليسار والأعلى
     confetti({
-        particleCount: 80,
-        angle: 60,
-        spread: 60,
-        origin: { x: 0, y: 0.8 }
+        particleCount: 90,
+        angle: 120,
+        spread: 70,
+        origin: { x: 1, y: 0.8 }
     });
 
-    // 3. انفجار من الجانب الأيمن يندفع للأعلى
+    // الانفجار الثالث: من الزاوية اليسرى السفلية ويندفع باتجاه اليمين والأعلى
     confetti({
-        particleCount: 80,
-        angle: 120,
-        spread: 60,
-        origin: { x: 1, y: 0.8 }
+        particleCount: 90,
+        angle: 60,
+        spread: 70,
+        origin: { x: 0, y: 0.8 }
     });
 });
 
-// زر العودة
+// الحدث الخاص بزر العودة (إذا أرادت إغلاق الرسالة والرجوع للبداية)
 backBtn.addEventListener('click', () => {
     surpriseScreen.classList.add('hidden');
     welcomeScreen.classList.remove('hidden');
